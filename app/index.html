@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" ng-app="OWMApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Open Weather Map App</title>
+</head>
+
+<body>
+    <a ng-href="#/cities/New York">New York</a>
+    <a ng-href="#/cities/Dallas">Dallas</a>
+    <a ng-href="#/cities/Chicago">Chicago</a>
+
+    <!--this element, which contains the ng-view directive will be the container where individual route templates will be loaded-->
+    <div ng-view></div>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="owm-app.js"></script>
+</body>
+
+</html>
