@@ -11,7 +11,7 @@ angular.module('OWMApp', ['ngRoute', 'ngAnimate'])
                 controller: 'HomeCtrl as home'
             })
             .when('/error', {
-                template: '<p class="error">Ups! This city sunk in Atlantic around 300 BC</p>'
+                template: '<p class="error">Woops! This city sunk in the Atlantic around 300 BC!</p>'
             })
             .when('/cities/:city', {
                 templateUrl: 'city.html',
