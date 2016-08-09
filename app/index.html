@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Open Weather Map App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<!--since we're toggling the isLoading scope variable, toggle a css class on and off by using ng-class-->
+
+<body ng-class="{loading: isLoading}">
     <a ng-href="#/cities/New York">New York</a>
     <a ng-href="#/cities/Dallas">Dallas</a>
     <a ng-href="#/cities/Chicago">Chicago</a>
@@ -16,9 +19,12 @@
     <a ng-href="#/cities/Atlantida"><b>The Lost City of Atlantida</b></a>
 
     <!--this element, which contains the ng-view directive will be the container where individual route templates will be loaded-->
-    <div ng-view></div>
+    <div class="animate-view-container">
+        <div ng-view class="animate-view"></div>
+    </div>
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
     <script type="text/javascript" src="owm-app.js"></script>
 </body>
 

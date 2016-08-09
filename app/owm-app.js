@@ -1,5 +1,5 @@
 //declare your module named OWMApp and inject ngRoute as a dependency.
-angular.module('OWMApp', ['ngRoute'])
+angular.module('OWMApp', ['ngRoute', 'ngAnimate'])
     .value('owmCities', ['New York', 'Dallas', 'Chicago', 'San Francisco', 'Los Angeles', 'Houston'])
 
 //inject a $routeProvide and use it to set URL routing rules
@@ -33,10 +33,21 @@ angular.module('OWMApp', ['ngRoute'])
                 redirectTo: '/error'
             });
 }])
-    .run(function ($rootScope, $location) {
+    .run(function ($rootScope, $location, $timeout) {
+        //when there is a route change error, reroute the user to the error path
         $rootScope.$on('$routeChangeError', function () {
             $location.path('/error');
-        })
+        });
+        //when a route change starts, set the root scope isLoading to true
+        $rootScope.$on('$routeChangeStart', function () {
+            $rootScope.isLoading = true;
+        });
+        //when a route change succeeds, wait 1 second and then set is Loading back to false
+        $rootScope.$on('$routeChangeSuccess', function () {
+            $timeout(function () {
+                $rootScope.isLoading = false;
+            }, 1000);
+        });
     })
 
 .controller('HomeCtrl', ['$scope', function ($scope) {
